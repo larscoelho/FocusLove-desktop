@@ -40,23 +40,24 @@
     "wait-on": "^9.0.1"
   },
   "build": {
-    "appId": "com.larissacoelho.focuslove",
-    "productName": "FocusLove",
-    "files": [
-      "dist/web/**",
-      "electron/**",
-      "package.json"
-    ],
-    "directories": {
-      "buildResources": "build"
-    },
-    "artifactName": "FocusLove-${version}-win.${ext}",
-    "mac": {
-      "target": [
-        "dmg",
-        "zip"
-      ]
-    },
+  "appId": "com.larissacoelho.focuslove",
+  "productName": "FocusLove",
+  "artifactName": "FocusLove-${version}-${os}.${ext}",
+  "directories": { "buildResources": "build" },
+  "files": ["dist/web/**", "electron/**", "package.json"],
+  "win": { "target": ["nsis", "zip"], "icon": "build/icon.ico" },
+  "mac": {
+    "target": ["dmg", "zip"],
+    "category": "public.app-category.productivity"
+  },
+  "nsis": {
+    "oneClick": true,
+    "perMachine": false,
+    "allowElevation": true,
+    "createDesktopShortcut": true,
+    "shortcutName": "FocusLove"
+  }
+},
     "win": {
       "target": [
         "nsis",
