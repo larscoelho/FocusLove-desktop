@@ -46,10 +46,6 @@
   "directories": { "buildResources": "build" },
   "files": ["dist/web/**", "electron/**", "package.json"],
   "win": { "target": ["nsis", "zip"], "icon": "build/icon.ico" },
-  "mac": {
-    "target": ["dmg", "zip"],
-    "category": "public.app-category.productivity"
-  },
   "nsis": {
     "oneClick": true,
     "perMachine": false,
