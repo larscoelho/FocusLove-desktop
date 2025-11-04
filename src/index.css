@@ -1,0 +1,41 @@
+@import "@fontsource/pixelify-sans/index.css";
+@import "@fontsource/nunito-sans/index.css";
+@import "tailwindcss";
+
+@theme {
+  --font-pixelify: "Pixelify Sans", sans-serif;
+  --font-body: "Nunito Sans", sans-serif;
+}
+
+/* animação de dois frames (funcionando antes) */
+@keyframes blinkFrame {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.animate-frame {
+  animation: blinkFrame 1s steps(1) infinite;
+}
+
+.animate-frame-delay {
+  animation: blinkFrame 1s steps(1) infinite reverse;
+}
+/* permite arrastar a janela clicando nessa área */
+.draggable { -webkit-app-region: drag; }
+/* impede arrastar quando clicar em botões/inputs dentro da faixa */
+.no-drag   { -webkit-app-region: no-drag; }
+
+/* importante para janela transparente ficar limpa */
+html, body { background: transparent; }
+/* ---- evitar qualquer scroll na janela frameless ---- */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;          /* mata barras de rolagem */
+  overscroll-behavior: none; /* evita “puxar” a página */
+}
+
+/* esconder scrollbars em todos os navegadores */
+*::-webkit-scrollbar { width: 0; height: 0; }
+* { scrollbar-width: none; }
