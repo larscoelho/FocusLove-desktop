@@ -18,17 +18,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install deps
-        run: npm ci
+        run: npm install
+        env:
+          CI: false
 
       - name: Build web
         run: npm run build
 
       - name: Build mac artifacts (DMG + ZIP)
-        run: npx electron-builder --mac dmg zip
+        run: npx electron-builder --mac dmg zip --publish never
         env:
-          CSC_IDENTITY_AUTO: 'false'   # sem assinatura (ok p/ uso pessoal)
+          CSC_IDENTITY_AUTO: 'false'
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
